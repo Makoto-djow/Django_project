@@ -15,6 +15,11 @@ class Product(models.Model):
     updated_at = models.DateField(
         auto_now=True, verbose_name="Дата последнего изменения"
     )
+    view_counter = models.PositiveIntegerField(
+        verbose_name="Счетчик просомтров",
+        help_text="Укажите кол-во просмоторов",
+        default=0
+    )
 
     class Meta:
         verbose_name = "продукт"
