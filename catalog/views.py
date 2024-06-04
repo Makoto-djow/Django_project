@@ -54,7 +54,7 @@ class BlogCreateView(CreateView):
 
 class BlogUpdateView(UpdateView):
     model = Blog
-    fields = ['name', 'description', 'photo']
+    fields = ['name', 'description', 'photo', 'updated_at']
     success_url = reverse_lazy('catalog:blog_list')
 
     def get_success_url(self):
