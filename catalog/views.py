@@ -26,6 +26,11 @@ class ProductDetailView(DetailView):
 class BlogListView(ListView):
     model = Blog
 
+    def get_queryset(self, *args, **kwargs):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(published=True)
+        return queryset
+
 
 class BlogDetailView(DetailView):
     model = Blog
