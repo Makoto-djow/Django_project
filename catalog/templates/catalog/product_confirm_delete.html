@@ -5,12 +5,18 @@
         <div class="col-6">
             <form class="row" method="post" enctype="multipart/form-data">
                 <div class="card">
-                    <p class="card-text">Удалить? {{ object.name }} </p>
+                    <p class="card-text">действительно удалить? {{ object.name }} </p>
                     <div class="card-body">
                         {% csrf_token %}
                     </div>
-                    <button type="submit" class="btn btn-primary">Удалить</button>
-                    <a class="btn btn-primary" href="{% url 'catalog:blog_list'%}" role="button">Отменить</a>
+                    <p>
+                        <button type="submit" class="btn btn-primary">Удалить</button>
+                    </p>
+                    <p>
+                        <a class="btn btn-primary" href="{% url 'catalog:products_list'%}" role="button">Отменить</a>
+                    </p>
+
+
                 </div>
             </form>
         </div>

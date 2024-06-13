@@ -37,19 +37,17 @@ class Category(models.Model):
         return self.name
 
 
-class Blog(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Заголовок")
-    slug = models.SlugField(blank=True, null=True, max_length=150, unique=True, verbose_name="slug")
-    description = models.TextField(blank=True, null=True, verbose_name="Описание")
-    photo = models.ImageField(blank=True, null=True, upload_to='catalog/photo', verbose_name='Изображение', help_text='Выберите изображение')
-    created_at = models.DateField(blank=True, null=True, verbose_name="Дата создание записи", auto_now_add=True, editable=False)
-    updated_at = models.DateField(blank=True, null=True, verbose_name="Дата последнего изменения")
-    viewed = models.PositiveIntegerField(verbose_name='Счетчик просмотров', help_text="Укажите количество просмотров", default=0)
+class Version(models.Model):
+    name = models.ForeignKey(Product, verbose_name='Продукт', on_delete=models.CASCADE, related_name='versions')
+    version_number = models.PositiveIntegerField(verbose_name='Номер версии')
+    version_name = models.CharField(max_length=100, verbose_name="Название версии")
+    version_now = models.BooleanField(
+        default=True, verbose_name="Признак текущей версии"
+    )
 
     class Meta:
-        verbose_name = "Блог"
-        verbose_name_plural = "Блоги"
-        ordering = ["name", "created_at", "updated_at"]
+        verbose_name = "Версия"
+        verbose_name_plural = "Версии"
 
     def __str__(self):
-        return self.name
+        return f"{self.version_name} | {self.version_number}"
