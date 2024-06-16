@@ -185,3 +185,5 @@ fabric.properties
 .idea
 
 .env
+catalog/__pycache__
+config/__pycache__
