@@ -1,5 +1,8 @@
 from django.db import models
 
+from users.models import User
+
+
 # Create your models here.
 
 
@@ -15,6 +18,7 @@ class Product(models.Model):
     updated_at = models.DateField(
         auto_now=True, verbose_name="Дата последнего изменения"
     )
+    owner = models.ForeignKey(User, verbose_name='Владелец', help_text='Укажите владельца', blank=True, null=True, on_delete=models.SET_NULL)
 
     class Meta:
         verbose_name = "продукт"
